@@ -1,0 +1,1820 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="向洁 | 品牌运营主管 · 10年全域品牌增长与AI驱动内容工业化专家">
+    <title>向洁 · 品牌运营作品集</title>
+    <style>
+        /* ========================================
+           设计系统 Design System
+           ======================================== */
+        :root {
+            /* 主色系 — 深海军蓝 + 精致金 */
+            --color-primary: #0B1426;
+            --color-primary-light: #16263D;
+            --color-primary-soft: #1E3354;
+            --color-accent: #C9A961;
+            --color-accent-light: #D4BC7E;
+            --color-accent-dark: #A88945;
+
+            /* 中性色 */
+            --color-white: #FFFFFF;
+            --color-bg: #FAFBFC;
+            --color-bg-alt: #F2F4F7;
+            --color-border: #E2E6EC;
+            --color-text: #1C2333;
+            --color-text-secondary: #5A6577;
+            --color-text-muted: #8B95A7;
+            --color-text-inverse: #FFFFFF;
+            --color-text-inverse-muted: rgba(255,255,255,0.65);
+
+            /* 字体 */
+            --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            --font-serif: "Georgia", "Songti SC", "SimSun", serif;
+
+            /* 间距 */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+            --space-3xl: 8rem;
+
+            /* 圆角 */
+            --radius-sm: 6px;
+            --radius-md: 12px;
+            --radius-lg: 20px;
+
+            /* 阴影 */
+            --shadow-sm: 0 1px 3px rgba(11,20,38,0.06);
+            --shadow-md: 0 4px 20px rgba(11,20,38,0.08);
+            --shadow-lg: 0 12px 48px rgba(11,20,38,0.12);
+
+            /* 过渡 */
+            --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+            /* 最大宽度 */
+            --max-width: 1200px;
+        }
+
+        /* ========================================
+           重置 Reset
+           ======================================== */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            color: var(--color-text);
+            background: var(--color-white);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+        img { max-width: 100%; display: block; }
+
+        /* ========================================
+           通用工具类
+           ======================================== */
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section {
+            padding: var(--space-3xl) 0;
+            position: relative;
+        }
+
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--color-accent);
+            margin-bottom: var(--space-md);
+        }
+
+        .section-label::before {
+            content: '';
+            width: 32px;
+            height: 1px;
+            background: var(--color-accent);
+        }
+
+        .section-title {
+            font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+            font-weight: 700;
+            color: var(--color-primary);
+            line-height: 1.3;
+            margin-bottom: var(--space-md);
+            letter-spacing: -0.02em;
+        }
+
+        .section-subtitle {
+            font-size: 1.05rem;
+            color: var(--color-text-secondary);
+            max-width: 640px;
+            line-height: 1.8;
+        }
+
+        /* ========================================
+           导航栏 Navigation
+           ======================================== */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255,255,255,0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid transparent;
+            transition: var(--transition);
+        }
+
+        .nav.scrolled {
+            border-bottom-color: var(--color-border);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .nav-inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            letter-spacing: 0.02em;
+        }
+
+        .nav-logo span {
+            color: var(--color-accent);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            font-size: 0.9rem;
+            color: var(--color-text-secondary);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--color-accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: var(--color-primary);
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .nav-toggle span {
+            width: 24px;
+            height: 2px;
+            background: var(--color-primary);
+            transition: var(--transition);
+        }
+
+        /* ========================================
+           Hero 首屏
+           ======================================== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+            position: relative;
+            overflow: hidden;
+            padding-top: 80px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(201,169,97,0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(201,169,97,0.05) 0%, transparent 50%);
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h60v60H0z' fill='none' stroke='rgba(255,255,255,0.02)' stroke-width='1'/%3E%3C/svg%3E");
+        }
+
+        .hero-inner {
+            position: relative;
+            z-index: 2;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 4rem;
+            align-items: center;
+            width: 100%;
+        }
+
+        .hero-content {
+            color: var(--color-white);
+        }
+
+        .hero-tagline {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.12em;
+            color: var(--color-accent);
+            margin-bottom: var(--space-lg);
+            padding: 0.5rem 1rem;
+            border: 1px solid rgba(201,169,97,0.3);
+            border-radius: 50px;
+            background: rgba(201,169,97,0.05);
+        }
+
+        .hero-tagline::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: var(--color-accent);
+            border-radius: 50%;
+        }
+
+        .hero-name {
+            font-size: clamp(2.8rem, 6vw, 4.5rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.05;
+            margin-bottom: var(--space-sm);
+        }
+
+        .hero-title {
+            font-size: clamp(1.1rem, 2vw, 1.5rem);
+            font-weight: 400;
+            color: var(--color-text-inverse-muted);
+            margin-bottom: var(--space-lg);
+            line-height: 1.6;
+        }
+
+        .hero-title strong {
+            color: var(--color-accent);
+            font-weight: 600;
+        }
+
+        .hero-desc {
+            font-size: 1rem;
+            color: var(--color-text-inverse-muted);
+            line-height: 1.9;
+            max-width: 540px;
+            margin-bottom: var(--space-xl);
+        }
+
+        .hero-metrics {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-bottom: var(--space-xl);
+        }
+
+        .metric {
+            border-left: 2px solid rgba(201,169,97,0.4);
+            padding-left: 1rem;
+        }
+
+        .metric-value {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--color-accent);
+            line-height: 1;
+            margin-bottom: 0.3rem;
+        }
+
+        .metric-label {
+            font-size: 0.78rem;
+            color: var(--color-text-inverse-muted);
+            letter-spacing: 0.03em;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.9rem 2rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border-radius: 8px;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--color-accent);
+            color: var(--color-primary);
+        }
+
+        .btn-primary:hover {
+            background: var(--color-accent-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(201,169,97,0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--color-white);
+            border: 1px solid rgba(255,255,255,0.25);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255,255,255,0.08);
+            border-color: rgba(255,255,255,0.4);
+        }
+
+        /* Hero 右侧图片占位 */
+        .hero-visual {
+            position: relative;
+        }
+
+        .hero-portrait {
+            width: 100%;
+            aspect-ratio: 4 / 5;
+            border-radius: var(--radius-lg);
+            background: linear-gradient(135deg, rgba(201,169,97,0.1), rgba(255,255,255,0.05));
+            border: 1px solid rgba(201,169,97,0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 0.5rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .hero-portrait-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 25%;
+            display: block;
+            transition: transform 0.8s ease;
+        }
+
+        .hero-portrait:hover .hero-portrait-img {
+            transform: scale(1.04);
+        }
+
+        .hero-portrait::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 60%, rgba(11,20,38,0.4) 100%);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .hero-portrait-label {
+            font-size: 0.85rem;
+            color: var(--color-text-inverse-muted);
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-portrait-dim {
+            font-size: 0.75rem;
+            color: var(--color-accent);
+            font-weight: 600;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            background: var(--color-white);
+            color: var(--color-primary);
+            padding: 1rem 1.5rem;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-lg);
+            text-align: center;
+        }
+
+        .hero-badge-num {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--color-accent-dark);
+        }
+
+        .hero-badge-text {
+            font-size: 0.75rem;
+            color: var(--color-text-secondary);
+        }
+
+        /* ========================================
+           关于 About
+           ======================================== */
+        .about {
+            background: var(--color-white);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.3fr;
+            gap: 4rem;
+            align-items: start;
+            margin-top: var(--space-xl);
+        }
+
+        .about-visual {
+            position: sticky;
+            top: 100px;
+        }
+
+        .about-portrait {
+            width: 100%;
+            aspect-ratio: 3 / 4;
+            border-radius: var(--radius-md);
+            background: var(--color-bg-alt);
+            border: 1px dashed var(--color-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 0.4rem;
+            overflow: hidden;
+            box-shadow: 0 12px 36px rgba(11,20,38,0.12);
+            border: none;
+            position: relative;
+        }
+
+        .about-portrait-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 30%;
+            display: block;
+            transition: transform 0.8s ease;
+        }
+
+        .about-portrait:hover .about-portrait-img {
+            transform: scale(1.04);
+        }
+
+        .about-portrait::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 70%, rgba(11,20,38,0.08) 100%);
+            pointer-events: none;
+        }
+
+        .about-portrait-icon {
+            font-size: 2rem;
+            color: var(--color-text-muted);
+        }
+
+        .about-portrait-label {
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+        }
+
+        .about-portrait-dim {
+            font-size: 0.75rem;
+            color: var(--color-accent-dark);
+            font-weight: 600;
+        }
+
+        .about-content h3 {
+            font-size: 1.3rem;
+            color: var(--color-primary);
+            margin-bottom: var(--space-md);
+            font-weight: 700;
+        }
+
+        .about-content p {
+            color: var(--color-text-secondary);
+            line-height: 1.9;
+            margin-bottom: var(--space-md);
+            font-size: 1rem;
+        }
+
+        .about-content strong {
+            color: var(--color-primary);
+            font-weight: 600;
+        }
+
+        .about-values {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: var(--space-lg);
+        }
+
+        .value-card {
+            padding: 1.5rem;
+            background: var(--color-bg);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--color-border);
+            transition: var(--transition);
+        }
+
+        .value-card:hover {
+            border-color: var(--color-accent);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-3px);
+        }
+
+        .value-card-icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .value-card-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: 0.3rem;
+        }
+
+        .value-card-desc {
+            font-size: 0.85rem;
+            color: var(--color-text-secondary);
+            line-height: 1.6;
+        }
+
+        /* ========================================
+           案例展示 Case Studies
+           ======================================== */
+        .cases {
+            background: var(--color-bg);
+        }
+
+        .cases-header {
+            text-align: center;
+            margin-bottom: var(--space-2xl);
+        }
+
+        .cases-header .section-label {
+            justify-content: center;
+        }
+
+        .cases-header .section-label::before {
+            display: none;
+        }
+
+        .cases-header .section-subtitle {
+            margin: 0 auto;
+        }
+
+        .case-item {
+            background: var(--color-white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            margin-bottom: var(--space-xl);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            border: 1px solid var(--color-border);
+        }
+
+        .case-item:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-4px);
+        }
+
+        .case-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 420px;
+        }
+
+        .case-item:nth-child(even) .case-visual {
+            order: 2;
+        }
+
+        .case-visual {
+            background: var(--color-primary);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 420px;
+        }
+
+        .case-visual-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+            transition: transform 0.6s ease;
+        }
+
+        .case-item:hover .case-visual-img {
+            transform: scale(1.03);
+        }
+
+        .case-visual-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            color: var(--color-text-inverse-muted);
+        }
+
+        .case-visual-placeholder .icon {
+            font-size: 2.5rem;
+            opacity: 0.5;
+        }
+
+        .case-visual-placeholder .label {
+            font-size: 0.85rem;
+        }
+
+        .case-visual-placeholder .dim {
+            font-size: 0.75rem;
+            color: var(--color-accent);
+            font-weight: 600;
+            padding: 0.3rem 0.8rem;
+            border: 1px solid rgba(201,169,97,0.3);
+            border-radius: 20px;
+            background: rgba(201,169,97,0.05);
+        }
+
+        .case-content {
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .case-number {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--color-accent);
+            letter-spacing: 0.15em;
+            margin-bottom: var(--space-sm);
+        }
+
+        .case-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: var(--space-sm);
+            line-height: 1.3;
+        }
+
+        .case-company {
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+            margin-bottom: var(--space-md);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .case-company .dot {
+            width: 4px;
+            height: 4px;
+            background: var(--color-accent);
+            border-radius: 50%;
+        }
+
+        .case-desc {
+            font-size: 0.92rem;
+            color: var(--color-text-secondary);
+            line-height: 1.8;
+            margin-bottom: var(--space-md);
+        }
+
+        .case-star {
+            display: grid;
+            gap: 0.8rem;
+            margin-bottom: var(--space-md);
+        }
+
+        .star-item {
+            display: grid;
+            grid-template-columns: 60px 1fr;
+            gap: 1rem;
+            align-items: start;
+        }
+
+        .star-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--color-accent-dark);
+            letter-spacing: 0.05em;
+            padding-top: 2px;
+        }
+
+        .star-text {
+            font-size: 0.88rem;
+            color: var(--color-text-secondary);
+            line-height: 1.7;
+        }
+
+        .star-text strong {
+            color: var(--color-primary);
+            font-weight: 600;
+        }
+
+        .case-results {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            padding-top: var(--space-md);
+            border-top: 1px solid var(--color-border);
+        }
+
+        .result-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .result-value {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--color-accent-dark);
+            line-height: 1;
+            margin-bottom: 0.2rem;
+        }
+
+        .result-label {
+            font-size: 0.78rem;
+            color: var(--color-text-muted);
+        }
+
+        /* ========================================
+           职业轨迹 Timeline
+           ======================================== */
+        .timeline-section {
+            background: var(--color-white);
+        }
+
+        .timeline {
+            position: relative;
+            margin-top: var(--space-2xl);
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--color-accent), var(--color-border));
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: var(--space-xl);
+        }
+
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -2rem;
+            top: 4px;
+            width: 18px;
+            height: 18px;
+            background: var(--color-white);
+            border: 3px solid var(--color-accent);
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .timeline-date {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--color-accent-dark);
+            margin-bottom: 0.3rem;
+        }
+
+        .timeline-role {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: 0.2rem;
+        }
+
+        .timeline-company {
+            font-size: 0.9rem;
+            color: var(--color-text-secondary);
+            margin-bottom: 0.6rem;
+        }
+
+        .timeline-desc {
+            font-size: 0.88rem;
+            color: var(--color-text-secondary);
+            line-height: 1.8;
+            max-width: 700px;
+        }
+
+        .timeline-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-top: 0.6rem;
+        }
+
+        .tag {
+            font-size: 0.75rem;
+            padding: 0.2rem 0.7rem;
+            background: var(--color-bg-alt);
+            color: var(--color-text-secondary);
+            border-radius: 20px;
+            font-weight: 500;
+        }
+
+        /* ========================================
+           技能矩阵 Skills
+           ======================================== */
+        .skills {
+            background: var(--color-primary);
+            color: var(--color-white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skills::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(201,169,97,0.06), transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(201,169,97,0.04), transparent 40%);
+        }
+
+        .skills .section-title { color: var(--color-white); }
+        .skills .section-label { color: var(--color-accent); }
+        .skills .section-subtitle { color: var(--color-text-inverse-muted); }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: var(--space-2xl);
+            position: relative;
+            z-index: 1;
+        }
+
+        .skill-category {
+            padding: 2rem;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: var(--radius-md);
+            transition: var(--transition);
+        }
+
+        .skill-category:hover {
+            background: rgba(255,255,255,0.06);
+            border-color: rgba(201,169,97,0.3);
+        }
+
+        .skill-cat-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--color-accent);
+            margin-bottom: var(--space-md);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+        }
+
+        .skill-tag {
+            font-size: 0.82rem;
+            padding: 0.4rem 0.9rem;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 6px;
+            color: var(--color-text-inverse-muted);
+            transition: var(--transition);
+        }
+
+        .skill-tag:hover {
+            background: rgba(201,169,97,0.1);
+            border-color: var(--color-accent);
+            color: var(--color-white);
+        }
+
+        /* ========================================
+           联系 Contact
+           ======================================== */
+        .contact {
+            background: var(--color-white);
+            text-align: center;
+        }
+
+        .contact-inner {
+            max-width: 680px;
+            margin: 0 auto;
+        }
+
+        .contact-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            color: var(--color-primary);
+            margin-bottom: var(--space-md);
+            letter-spacing: -0.02em;
+        }
+
+        .contact-desc {
+            font-size: 1.05rem;
+            color: var(--color-text-secondary);
+            line-height: 1.8;
+            margin-bottom: var(--space-xl);
+        }
+
+        .contact-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: var(--space-xl);
+        }
+
+        .contact-card {
+            padding: 2rem 1.5rem;
+            background: var(--color-bg);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            transition: var(--transition);
+        }
+
+        .contact-card:hover {
+            border-color: var(--color-accent);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .contact-card-icon {
+            font-size: 1.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .contact-card-label {
+            font-size: 0.8rem;
+            color: var(--color-text-muted);
+            margin-bottom: 0.3rem;
+            letter-spacing: 0.05em;
+        }
+
+        .contact-card-value {
+            font-size: 0.95rem;
+            color: var(--color-primary);
+            font-weight: 600;
+        }
+
+        /* ========================================
+           页脚 Footer
+           ======================================== */
+        .footer {
+            background: var(--color-primary);
+            color: var(--color-text-inverse-muted);
+            padding: var(--space-lg) 0;
+            text-align: center;
+        }
+
+        .footer p {
+            font-size: 0.85rem;
+        }
+
+        .footer-name {
+            color: var(--color-accent);
+            font-weight: 600;
+        }
+
+        /* ========================================
+           滚动动画
+           ======================================== */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-up:nth-child(2) { transition-delay: 0.1s; }
+        .fade-up:nth-child(3) { transition-delay: 0.2s; }
+        .fade-up:nth-child(4) { transition-delay: 0.3s; }
+
+        /* ========================================
+           响应式
+           ======================================== */
+        @media (max-width: 968px) {
+            .hero-inner {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+                text-align: center;
+            }
+
+            .hero-visual { max-width: 400px; margin: 0 auto; }
+            .hero-desc { margin-left: auto; margin-right: auto; }
+            .hero-metrics { grid-template-columns: repeat(2, 1fr); }
+            .hero-cta { justify-content: center; }
+
+            .about-grid { grid-template-columns: 1fr; }
+            .about-visual { position: static; max-width: 400px; }
+            .about-values { grid-template-columns: 1fr; }
+
+            .case-grid { grid-template-columns: 1fr; }
+            .case-item:nth-child(even) .case-visual { order: 0; }
+            .case-visual { min-height: 280px; }
+            .case-content { padding: 2rem; }
+
+            .skills-grid { grid-template-columns: 1fr; }
+            .contact-cards { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .section { padding: var(--space-2xl) 0; }
+
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--color-white);
+                flex-direction: column;
+                padding: 1.5rem 2rem;
+                gap: 1.2rem;
+                box-shadow: var(--shadow-md);
+                border-top: 1px solid var(--color-border);
+            }
+
+            .nav-menu.active { display: flex; }
+            .nav-toggle { display: flex; }
+
+            .hero-metrics { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+            .metric-value { font-size: 1.4rem; }
+
+            .case-results { gap: 1.5rem; }
+            .result-value { font-size: 1.3rem; }
+
+            .star-item { grid-template-columns: 50px 1fr; gap: 0.6rem; }
+        }
+
+        @media (max-width: 480px) {
+            .container { padding: 0 1.2rem; }
+            .hero-metrics { grid-template-columns: 1fr 1fr; }
+            .case-content { padding: 1.5rem; }
+            .hero-cta { flex-direction: column; }
+            .btn { width: 100%; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========================================
+         导航栏
+         ======================================== -->
+    <nav class="nav" id="nav">
+        <div class="nav-inner">
+            <a href="#hero" class="nav-logo">向<span>洁</span> · Portfolio</a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#about">关于</a></li>
+                <li><a href="#cases">核心案例</a></li>
+                <li><a href="#timeline">职业轨迹</a></li>
+                <li><a href="#skills">能力矩阵</a></li>
+                <li><a href="#contact">联系</a></li>
+            </ul>
+            <div class="nav-toggle" id="navToggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ========================================
+         Hero 首屏
+         ======================================== -->
+    <section class="hero" id="hero">
+        <div class="hero-inner">
+            <div class="hero-content fade-up">
+                <span class="hero-tagline">品牌运营主管 · 10年全域品牌增长</span>
+                <h1 class="hero-name">向洁</h1>
+                <p class="hero-title">
+                    <strong>AI驱动内容工业化</strong> · <strong>全球化品牌战略</strong> · <strong>全域增长操盘</strong>
+                </p>
+                <p class="hero-desc">
+                    10年深耕B2B医疗健康、SaaS及出海运营领域，主导企业级新媒体矩阵从0到100万+粉丝增长，构建AIGC内容生产流水线实现人效提升150%，统筹CACLP、MEDICA等百万级国际展会零失误交付。以数据归因驱动品牌预算精准投放，以策略+创意双引擎打通增长全链路。
+                </p>
+                <div class="hero-metrics">
+                    <div class="metric">
+                        <div class="metric-value">10<span style="font-size:1rem">年</span></div>
+                        <div class="metric-label">品牌增长经验</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">150<span style="font-size:1rem">%</span></div>
+                        <div class="metric-label">AIGC人效提升</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">100<span style="font-size:1rem">万+</span></div>
+                        <div class="metric-label">新媒体矩阵粉丝</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">5<span style="font-size:1rem">大</span></div>
+                        <div class="metric-label">核心商业增量维度</div>
+                    </div>
+                </div>
+                <div class="hero-cta">
+                    <a href="#cases" class="btn btn-primary">查看核心案例 →</a>
+                    <a href="#contact" class="btn btn-outline">联系我</a>
+                </div>
+            </div>
+            <div class="hero-visual fade-up">
+                <div class="hero-portrait">
+                    <img src="assets/hero-portrait.jpg" alt="向洁 - 品牌运营主管" class="hero-portrait-img">
+                </div>
+                <div class="hero-badge">
+                    <div class="hero-badge-num">5</div>
+                    <div class="hero-badge-text">行业标杆案例</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         关于
+         ======================================== -->
+    <section class="section about" id="about">
+        <div class="container">
+            <div class="fade-up">
+                <span class="section-label">About Me</span>
+                <h2 class="section-title">策略与创意双引擎驱动的品牌增长操盘手</h2>
+            </div>
+            <div class="about-grid">
+<div class="about-visual fade-up">
+                <div class="about-portrait">
+                    <img src="assets/about-portrait.png" alt="向洁 - 品牌运营主管 个人形象照" class="about-portrait-img" loading="lazy">
+                </div>
+            </div>
+                <div class="about-content fade-up">
+                    <h3>不只是执行者，更是品牌增长的架构师</h3>
+                    <p>
+                        我拥有<strong>10年1个月</strong>的全域品牌增长与新媒体矩阵操盘经验，横跨医疗设备、SaaS、互联网游戏三大行业。从深圳淘乐网络的百万阅读量公众号运营，到茂日科技10万+粉丝SaaS矩阵搭建，再到帝迈生物的AIGC内容工业化重构——我的职业轨迹始终围绕一个核心命题：<strong>如何用更高效的手段，实现品牌价值的规模化增长。</strong>
+                    </p>
+                    <p>
+                        在帝迈生物任职期间，我引入多模态AI工具链重构内容全生命周期，制定标准化输出规范（SOP），将海报与图片制作成本<strong>降低40%</strong>，内容团队综合人效<strong>提升150%</strong>。同时统筹CACLP、MEDICA、NCLM等国内外顶级学术展会品牌传播，建立"展会线索-仪器统筹-跨区域销售"的高效周转机制，实现百万级展会<strong>零失误交付</strong>。
+                    </p>
+                    <p>
+                        我的专业背景融合了土木工程的严谨数据建模能力与心理学的用户共情力——GPA 3.7（前5%），在校期间即独立孵化"英雄联盟情报站"新媒体矩阵并签约小说创作。这种理性与感性的双重底色，使我能够将<strong>SEO流量归因、ROI监控</strong>与<strong>品牌创意表达</strong>深度融合，完成从增长策略到内容执行的全链路闭环。
+                    </p>
+
+                    <div class="about-values">
+                        <div class="value-card">
+                            <div class="value-card-icon">🎯</div>
+                            <div class="value-card-title">数据驱动决策</div>
+                            <div class="value-card-desc">SWOT/BCG模型竞品归因，品牌预算精准投放</div>
+                        </div>
+                        <div class="value-card">
+                            <div class="value-card-icon">🤖</div>
+                            <div class="value-card-title">AI效能革命</div>
+                            <div class="value-card-desc">多模态AI重构内容SOP，人效提升150%</div>
+                        </div>
+                        <div class="value-card">
+                            <div class="value-card-icon">🌍</div>
+                            <div class="value-card-title">全球化视野</div>
+                            <div class="value-card-desc">统筹国际展会传播，构建海外增长链路</div>
+                        </div>
+                        <div class="value-card">
+                            <div class="value-card-icon">✍️</div>
+                            <div class="value-card-title">内容共情力</div>
+                            <div class="value-card-desc">签约小说作者底蕴，爆款文案操盘功底</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         核心案例
+         ======================================== -->
+    <section class="section cases" id="cases">
+        <div class="container">
+            <div class="cases-header fade-up">
+                <span class="section-label">Case Studies</span>
+                <h2 class="section-title">五维商业增量 · 标杆案例集</h2>
+                <p class="section-subtitle">
+                    每个案例均遵循STAR叙事模型，从商业背景到攻坚路径再到量化结果，还原品牌增长的真实决策过程。
+                </p>
+            </div>
+
+            <!-- 案例1: AIGC内容工业化 -->
+            <div class="case-item fade-up">
+                <div class="case-grid">
+                    <div class="case-visual">
+                        <img src="assets/case-01-aigc-sop-v2.png" alt="帝迈生物AIGC内容生产流水线SOP流程图 - 7环节完整流程与核心成果展示" class="case-visual-img" loading="lazy">
+                    </div>
+                    <div class="case-content">
+                        <div class="case-number">CASE 01 / AIGC内容工业化</div>
+                        <h3 class="case-title">AI驱动内容生产流水线重构与效率革命</h3>
+                        <div class="case-company">
+                            <span>深圳市帝迈生物技术有限公司</span>
+                            <span class="dot"></span>
+                            <span>品牌主管</span>
+                            <span class="dot"></span>
+                            <span>2024.03 - 2026.04</span>
+                        </div>
+                        <p class="case-desc">在医疗设备行业内容生产依赖外包、成本高昂且效率低下的背景下，引入多模态AI工具链重构内容全生命周期，制定标准化输出规范。</p>
+                        <div class="case-star">
+                            <div class="star-item">
+                                <span class="star-label">S 场景</span>
+                                <span class="star-text">医疗设备行业学术内容门槛高，外包图片制作成本占品牌预算比重大，内容产出周期长、质量不稳定。</span>
+                            </div>
+                            <div class="star-item">
+                                <span class="star-label">T 任务</span>
+                                <span class="star-text">作为品牌主管，负责重构内容生产体系，降低外包成本并提升团队综合产出效率。</span>
+                            </div>
+                            <div class="star-item">
+                                <span class="star-label">A 行动</span>
+                                <span class="star-text">引入<strong>多模态AI工具链</strong>（LLM+图像生成），重构内容全生命周期；制定<strong>AI公众号排版、海报及红包封面</strong>自主设计的质检标准与SOP；建立标准化输出规范，实现从用户洞察到多语种分发的全流程自动化。</span>
+                            </div>
+                            <div class="star-item">
+                                <span class="star-label">R 结果</span>
+                                <span class="star-text">海报与图片制作成本<strong>降低40%</strong>，内容团队综合人效<strong>提升150%</strong>，显著提升内容规模化与商业ROI。</span>
+                            </div>
+                        </div>
+                        <div class="case-results">
+                            <div class="result-item">
+                                <div class="result-value">↓40%</div>
+                                <div class="result-label">制作成本降低</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-value">↑150%</div>
+                                <div class="result-label">综合人效提升</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-value">SOP</div>
+                                <div class="result-label">标准化体系落地</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 案例2: 全球学术展会 -->
+            <div class="case-item fade-up">
+                <div class="case-grid">
+                    <div class="case-content">
+                        <div class="case-number">CASE 02 / 全球展会运营</div>
+                        <h3 class="case-title">百万级国际学术展会全案运营与零失误交付</h3>
+                        <div class="case-company">
+                            <span>帝迈生物 / 康美生物</span>
+                            <span class="dot"></span>
+                            <span>品牌主管</span>
+                            <span class="dot"></span>
+                            <span>2021.10 - 2026.04</span>
+                        </div>
+                        <p class="case-desc">统筹CACLP、MEDICA、AACC、MEDLAB等国内外顶级学术展会品牌传播，构建从学术传播到海外转化的完整增长闭环。</p>
+                        <div class="case-star">
+                            <div class="star-item">
+                                <span class="star-label">S 场景</span>
+                                <span class="star-text">体外诊断行业展会是核心获客渠道，但涉及跨国协调、百万元级展厅搭建、仪器物流周转等多重复杂环节。</span>
+                            </div>
+                            <div class="star-item">
+                                <span class="star-label">T 任务</span>
+                                <span class="star-text">全面统筹国内外顶级学术展会的品牌传播、视觉呈现及百万元级会客展厅的动态更新，保障销售线索高效转化。</span>
+                            </div>
+                            <div class="star-item">
+                                <span class="star-label">A 行动</span>
+                                <span class="star-text">统筹<strong>CACLP、MEDICA、NCLM、迪拜WHX Labs及全球合作伙伴大会</strong>品牌传播全案；建立<strong>"展会线索-仪器集中统筹-跨区域销售支持"</strong>的高效周转机制；主导百万元级会客展厅动态更新与落地。</span>
+                            </div>
+                            <div class="star-item">
+                                <span class="star-label">R 结果</span>
+                                <span class="star-text">百万级大型展会<strong>零失误交付</strong>，全国销售展会仪器<strong>零延误寄送</strong>；成功构建"学术传播-线索获取-海外转化"增长闭环，推动品牌进入海外高价值市场。</span>
+                            </div>
+                        </div>
+                        <div class="case-results">
+                            <div class="result-item">
+                                <div class="result-value">0</div>
+                                <div class="result-label">交付失误率</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-value">5+</div>
+                                <div class="result-label">国际顶级展会</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-value">百万级</div>
+                                <div class="result-label">展厅统筹规模</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="case-visual">
+                        <img src="assets/case-02-exhibition.png" alt="帝迈生物国际展会现场 - MEDICA展厅全景、合作伙伴合影、商务洽谈、设备展示" class="case-visual-img" loading="lazy">
+                    </div>
+                </div>
+            </div>
+
+            <!-- 案例3: 新媒体与私域增长 -->
+            <div class="case-item fade-up">
+                <div class="case-grid">
+                    <div class="case-visual">
+                        <img src="assets/case-03-media-growth.png" alt="全域新媒体矩阵增长看板 - 茂日科技+淘乐网络 7大平台粉丝增长与私域闭环数据可视化" class="case-visual-img" loading="lazy">
+                    </div>
+                    <div class="case-content">
+                        <div class="case-number">CASE 03 / 新媒体私域增长</div>
+                        <h3 class="case-title">从0到100万+的全域新媒体矩阵与私域裂变</h3>
+                        <div class="case-company">
+                            <span>茂日科技 / 淘乐网络</span>
+                            <span class="dot"></span>
+                            <span>品牌主管 / 新媒体运营</span>
+                            <span class="dot"></span>
+                            <span>2016.08 - 2021.03</span>
+                        </div>
+                        <p class="case-desc">从0到1搭建企业级新媒体矩阵，操盘SaaS产品品牌架构，打通电商直播与私域社群裂变路径，实现规模化增长。</p>
+                        <div class="case-star">
+                            <div class="star-item">
+                                <span class="star-label">S 场景</span>
+                                <span class="star-text">SaaS产品"客聚集"缺乏品牌认知，新媒体渠道单一，私域流量体系空白。</span>
+                            </div>
+                            <div class="star-item">
+                                <span class="star-label">T 任务</span>
+                                <span class="star-text">从0到1搭建新媒体矩阵，建立品牌管理体系，打通电商与私域增长链路。</span>
+                            </div>
+                            <div class="star-item">
+                                <span class="star-label">A 行动</span>
+                                <span class="star-text">搭建覆盖<strong>公众号/头条/抖音/知乎/小红书/B站</strong>等全平台矩阵；确立推广渠道开拓、短视频营销、品牌升级、成功客户营销四大战略；策划"共战疫情"直播公益课，3天建立<strong>24个200人社群</strong>；建立企业微信客户管理体系，全生命周期管理提升留存。</span>
+                            </div>
+                            <div class="star-item">
+                                <span class="star-label">R 结果</span>
+                                <span class="star-text">茂日科技公众号粉丝增至<strong>10W+</strong>；淘乐网络公众号月阅读量<strong>100W+</strong>；裂变活动3天变现<strong>1000+套</strong>软件；私域留存率<strong>提升10%</strong>。</span>
+                            </div>
+                        </div>
+                        <div class="case-results">
+                            <div class="result-item">
+                                <div class="result-value">10W+</div>
+                                <div class="result-label">公众号粉丝</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-value">100W+</div>
+                                <div class="result-label">月阅读量</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-value">1000+</div>
+                                <div class="result-label">3天裂变变现</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 案例4: 国家级荣誉与品牌资产 -->
+            <div class="case-item fade-up">
+                <div class="case-grid">
+                    <div class="case-content">
+                        <div class="case-number">CASE 04 / 政策红利与信用背书</div>
+                        <h3 class="case-title">国家级荣誉申报与全球商标矩阵构建</h3>
+                        <div class="case-company">
+                            <span>深圳康美生物科技股份有限公司</span>
+                            <span class="dot"></span>
+                            <span>品牌主管</span>
+                            <span class="dot"></span>
+                            <span>2021.10 - 2024.03</span>
+                        </div>
+                        <p class="case-desc">主导国家级荣誉资质申报与知识产权体系搭建，实现政策红利与品牌信用双重放大，构建组织级长期竞争壁垒。</p>
+                        <div class="case-star">
+                            <div class="star-item">
+                                <span class="star-label">S 场景</span>
+                                <span class="star-text">医疗设备企业需通过国家级资质背书提升市场公信力，同时面临海外商标保护空白问题。</span>
+                            </div>
+                            <div class="star-item">
+                                <span class="star-label">T 任务</span>
+                                <span class="star-text">统筹荣誉资质申报全流程，独立完成国内外商标系统化注册，对接主流媒体实施高阶PR。</span>
+                            </div>
+                            <div class="star-item">
+                                <span class="star-label">A 行动</span>
+                                <span class="star-text">统筹申报<strong>国家级"专精特新"小巨人</strong>、出口商品品牌证明书、高促会科技创新奖；独立完成国内<strong>Kindmay（42类）、Massma（多类）</strong>商标注册，推进<strong>Kindmaycare</strong>在欧盟知识产权局（EUIPO）注册；对接<strong>深圳卫视</strong>新闻采访。</span>
+                            </div>
+                            <div class="star-item">
+                                <span class="star-label">R 结果</span>
+                                <span class="star-text">成功获评国家级<strong>"专精特新"小巨人</strong>称号；斩获科技创新奖；成功建立全球商标保护矩阵；落地深圳卫视新闻采访曝光，为后续政府与媒体合作奠定基础。</span>
+                            </div>
+                        </div>
+                        <div class="case-results">
+                            <div class="result-item">
+                                <div class="result-value">国家级</div>
+                                <div class="result-label">专精特新小巨人</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-value">EUIPO</div>
+                                <div class="result-label">欧盟商标注册</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-value">卫视</div>
+                                <div class="result-label">主流媒体曝光</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="case-visual">
+                        <img src="assets/case-04-honors.png" alt="国家级荣誉资质矩阵 - 专精特新小巨人、科技创新奖、3个商标注册证、深圳卫视新闻采访" class="case-visual-img" loading="lazy">
+                    </div>
+                </div>
+            </div>
+
+            <!-- 案例5: IP运营与文化资产 -->
+            <div class="case-item fade-up">
+                <div class="case-grid">
+                    <div class="case-visual">
+                        <img src="assets/case-05-ip.png" alt="企业IP形象孵化与卫视冠名 - 帝一鸣IP卡通形象、周边产品、重庆卫视健康到家冠名" class="case-visual-img" loading="lazy">
+                    </div>
+                    <div class="case-content">
+                        <div class="case-number">CASE 05 / 企业IP与文化运营</div>
+                        <h3 class="case-title">官方IP形象孵化与卫视级大屏内容冠名</h3>
+                        <div class="case-company">
+                            <span>帝迈生物 / 云信医疗</span>
+                            <span class="dot"></span>
+                            <span>品牌主管</span>
+                            <span class="dot"></span>
+                            <span>2021.03 - 2026.04</span>
+                        </div>
+                        <p class="case-desc">主导企业官方IP形象从0到1孵化及周边定制，操盘省级卫视节目冠名植入，融合私域引流实现高曝光与高转化。</p>
+                        <div class="case-star">
+                            <div class="star-item">
+                                <span class="star-label">S 场景</span>
+                                <span class="star-text">企业品牌需要差异化的情感连接点与高公信力曝光渠道，传统硬广投入产出比低。</span>
+                            </div>
+                            <div class="star-item">
+                                <span class="star-label">T 任务</span>
+                                <span class="star-text">打造企业官方IP形象及周边体系，操盘卫视节目冠名合作，实现品牌无形资产沉淀。</span>
+                            </div>
+                            <div class="star-item">
+                                <span class="star-label">A 行动</span>
+                                <span class="star-text">主导<strong>"帝一鸣"官方IP</strong>卡通形象设计及周边定制开发；操盘<strong>重庆卫视《健康到家》</strong>节目冠名植入，负责公众号菜单H5植入与节目内广告植入；融合签约小说创作者笔力打造高情商内容。</span>
+                            </div>
+                            <div class="star-item">
+                                <span class="star-label">R 结果</span>
+                                <span class="star-text">"帝一鸣"IP成功落地，强化品牌无形资产；卫视大屏内容与H5私域引流深度融合，实现<strong>高曝光与高转化</strong>双重目标；显著提升品牌在目标人群中的认知度与客户信任度。</span>
+                            </div>
+                        </div>
+                        <div class="case-results">
+                            <div class="result-item">
+                                <div class="result-value">IP</div>
+                                <div class="result-label">官方形象孵化</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-value">卫视级</div>
+                                <div class="result-label">大屏冠名曝光</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-value">H5</div>
+                                <div class="result-label">私域引流闭环</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ========================================
+         职业轨迹
+         ======================================== -->
+    <section class="section timeline-section" id="timeline">
+        <div class="container">
+            <div class="fade-up">
+                <span class="section-label">Career Path</span>
+                <h2 class="section-title">10年品牌增长职业轨迹</h2>
+                <p class="section-subtitle">从新媒体运营到品牌主管，从游戏行业到医疗设备，每一步都在拓展品牌增长的边界。</p>
+            </div>
+            <div class="timeline fade-up">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">2024.03 - 2026.04 · 2年1个月</div>
+                    <div class="timeline-role">品牌主管</div>
+                    <div class="timeline-company">深圳市帝迈生物技术有限公司 · 医疗设备/器械 · 1000-5000人</div>
+                    <div class="timeline-desc">主导AIGC内容流水线重构、全球学术展会全案运营、跨部门OA数字化流程架构、年度品牌战略决策。"帝一鸣"IP落地，人效提升150%，展会零失误交付。</div>
+                    <div class="timeline-tags">
+                        <span class="tag">AIGC</span><span class="tag">国际展会</span><span class="tag">IP孵化</span><span class="tag">OA数字化</span><span class="tag">战略决策</span>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">2021.10 - 2024.03 · 2年5个月</div>
+                    <div class="timeline-role">品牌主管</div>
+                    <div class="timeline-company">深圳康美生物科技股份有限公司 · 医疗设备/器械 · 已上市 · 500-1000人</div>
+                    <div class="timeline-desc">统筹集团官方新媒体平台运营、知识产权管理、国内外展会品牌运营。主导国家级"专精特新小巨人"申报、欧盟商标注册、深圳卫视采访。</div>
+                    <div class="timeline-tags">
+                        <span class="tag">新媒体矩阵</span><span class="tag">资质申报</span><span class="tag">商标注册</span><span class="tag">PR传播</span><span class="tag">电商协同</span>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">2021.03 - 2021.09 · 6个月</div>
+                    <div class="timeline-role">品牌主管 · 品宣部</div>
+                    <div class="timeline-company">重庆云信医疗科技有限公司 · 医疗/护理/卫生 · 150-500人</div>
+                    <div class="timeline-desc">统筹新媒体矩阵管理、品牌策划方案输出。主导重庆卫视《健康到家》冠名合作、星医打造计划、企业微信运营体系搭建。</div>
+                    <div class="timeline-tags">
+                        <span class="tag">卫视冠名</span><span class="tag">方案策划</span><span class="tag">VI设计</span><span class="tag">企微运营</span>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">2018.11 - 2021.03 · 2年4个月</div>
+                    <div class="timeline-role">品牌主管 · 市场营销中心</div>
+                    <div class="timeline-company">重庆茂日科技发展有限公司 · 互联网/电子商务 · 50-150人</div>
+                    <div class="timeline-desc">从0到1搭建新媒体矩阵，统筹SaaS产品"客聚集"品牌架构。策划"共战疫情"系列活动3天建24社群变现1000+套，公众号粉丝提升至10W+，私域留存率提升10%。</div>
+                    <div class="timeline-tags">
+                        <span class="tag">0-1矩阵搭建</span><span class="tag">SaaS品牌</span><span class="tag">直播运营</span><span class="tag">私域裂变</span><span class="tag">SEO/SEM</span>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">2016.08 - 2018.10 · 2年2个月</div>
+                    <div class="timeline-role">新媒体运营 · 市场部</div>
+                    <div class="timeline-company">深圳淘乐网络科技有限公司 · 网络游戏 · 150-500人</div>
+                    <div class="timeline-desc">负责"桃花源记"官方公众号运营，月阅读量100W+。策划桃花美人大赛等活动提升粉丝活跃度，管理玩家社群与线上主播运营。</div>
+                    <div class="timeline-tags">
+                        <span class="tag">游戏品牌</span><span class="tag">100W+阅读</span><span class="tag">社群运营</span><span class="tag">活动策划</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         技能矩阵
+         ======================================== -->
+    <section class="section skills" id="skills">
+        <div class="container">
+            <div class="fade-up">
+                <span class="section-label">Capabilities</span>
+                <h2 class="section-title">能力矩阵</h2>
+                <p class="section-subtitle">策略思维 × AI工具链 × 数据归因 × 创意表达，四位一体的复合型品牌增长能力。</p>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-category fade-up">
+                    <div class="skill-cat-title">🎯 品牌战略</div>
+                    <div class="skill-list">
+                        <span class="skill-tag">品牌架构规划</span>
+                        <span class="skill-tag">年度品牌战略</span>
+                        <span class="skill-tag">出海策略</span>
+                        <span class="skill-tag">SWOT分析</span>
+                        <span class="skill-tag">BCG矩阵</span>
+                        <span class="skill-tag">竞品流量归因</span>
+                        <span class="skill-tag">预算精准投放</span>
+                        <span class="skill-tag">VI视觉体系</span>
+                    </div>
+                </div>
+                <div class="skill-category fade-up">
+                    <div class="skill-cat-title">🤖 AI与内容</div>
+                    <div class="skill-list">
+                        <span class="skill-tag">AIGC内容工业化</span>
+                        <span class="skill-tag">多模态AI工具链</span>
+                        <span class="skill-tag">LLM应用</span>
+                        <span class="skill-tag">SOP制定</span>
+                        <span class="skill-tag">内容质检标准</span>
+                        <span class="skill-tag">爆款文案</span>
+                        <span class="skill-tag">多语种分发</span>
+                        <span class="skill-tag">SEO/关键词矩阵</span>
+                    </div>
+                </div>
+                <div class="skill-category fade-up">
+                    <div class="skill-cat-title">📊 增长运营</div>
+                    <div class="skill-list">
+                        <span class="skill-tag">新媒体矩阵操盘</span>
+                        <span class="skill-tag">私域流量体系</span>
+                        <span class="skill-tag">社群裂变</span>
+                        <span class="skill-tag">电商直播运营</span>
+                        <span class="skill-tag">ROI监控</span>
+                        <span class="skill-tag">用户生命周期</span>
+                        <span class="skill-tag">数据分析</span>
+                        <span class="skill-tag">SEM投放</span>
+                    </div>
+                </div>
+                <div class="skill-category fade-up">
+                    <div class="skill-cat-title">🌍 展会与海外</div>
+                    <div class="skill-list">
+                        <span class="skill-tag">国际展会全案</span>
+                        <span class="skill-tag">CACLP/MEDICA</span>
+                        <span class="skill-tag">AACC/MEDLAB</span>
+                        <span class="skill-tag">展厅统筹</span>
+                        <span class="skill-tag">供应链管理</span>
+                        <span class="skill-tag">跨区域销售支持</span>
+                        <span class="skill-tag">海外品牌传播</span>
+                    </div>
+                </div>
+                <div class="skill-category fade-up">
+                    <div class="skill-cat-title">📋 资质与资产</div>
+                    <div class="skill-list">
+                        <span class="skill-tag">国家级荣誉申报</span>
+                        <span class="skill-tag">专精特新小巨人</span>
+                        <span class="skill-tag">商标注册(国内/欧盟)</span>
+                        <span class="skill-tag">专利管理</span>
+                        <span class="skill-tag">知识产权体系</span>
+                        <span class="skill-tag">PR媒体对接</span>
+                        <span class="skill-tag">IP形象孵化</span>
+                    </div>
+                </div>
+                <div class="skill-category fade-up">
+                    <div class="skill-cat-title">🛠 工具与技术</div>
+                    <div class="skill-list">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Photoshop</span>
+                        <span class="skill-tag">3D Studio MAX</span>
+                        <span class="skill-tag">AutoCAD</span>
+                        <span class="skill-tag">PowerPoint</span>
+                        <span class="skill-tag">数据分析</span>
+                        <span class="skill-tag">视频剪辑</span>
+                        <span class="skill-tag">OA流程设计</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         联系
+         ======================================== -->
+    <section class="section contact" id="contact">
+        <div class="container">
+            <div class="contact-inner fade-up">
+                <span class="section-label" style="justify-content:center">Get In Touch</span>
+                <h2 class="contact-title">期待与您探讨品牌增长的下一个增长极</h2>
+                <p class="contact-desc">
+                    10年品牌增长实战经验，覆盖医疗设备、SaaS、互联网三大行业。如果您正在寻找一位能用AI重构内容效率、用数据驱动品牌决策、用全球化视野操盘增长的品牌运营主管——欢迎随时联系。
+                </p>
+                <div class="contact-cards">
+                    <div class="contact-card">
+                        <div class="contact-card-icon">📱</div>
+                        <div class="contact-card-label">电话</div>
+                        <div class="contact-card-value">13101050275</div>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-card-icon">📧</div>
+                        <div class="contact-card-label">邮箱</div>
+                        <div class="contact-card-value">178408179@qq.com</div>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-card-icon">📍</div>
+                        <div class="contact-card-label">现居地</div>
+                        <div class="contact-card-value">深圳 · 光明区</div>
+                    </div>
+                </div>
+                <a href="mailto:178408179@qq.com" class="btn btn-primary" style="background:var(--color-primary);color:var(--color-white)">
+                    发送邮件联系 →
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         页脚
+         ======================================== -->
+    <footer class="footer">
+        <p>© 2026 <span class="footer-name">向洁</span> · 品牌运营作品集 · 10年全域品牌增长经验</p>
+    </footer>
+
+    <!-- ========================================
+         脚本
+         ======================================== -->
+    <script>
+        // 导航栏滚动效果
+        const nav = document.getElementById('nav');
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // 移动端菜单
+        navToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        navMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // 滚动渐入动画
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -80px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-up').forEach(el => {
+            observer.observe(el);
+        });
+
+        // 导航高亮当前section
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-menu a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 120;
+                if (window.scrollY >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.style.color = '';
+                if (link.getAttribute('href') === '#' + current) {
+                    link.style.color = 'var(--color-primary)';
+                    link.style.fontWeight = '600';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
